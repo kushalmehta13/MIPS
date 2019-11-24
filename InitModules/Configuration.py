@@ -11,7 +11,6 @@ class Config:
         # for every config type and config values
         for k,v in conf.items():
             # Validate every configuration
-            print(k,v)
             if self.isEmpty(k,v):
                 raise Exception('Error in Config file: \nIllegal configuration entered - '+ k)
             elif int(v[0]) < 0:
@@ -27,7 +26,7 @@ class Config:
     def clean(self, conf):
         for k,v in conf.items():
             if len(v) > 1:
-                conf[k] = [v[0].strip(), v[1].strip()]
+                conf[k] = [int(v[0].strip()), v[1].strip()]
             else:
-                conf[k] = [v[0].strip()]
+                conf[k] = [int(v[0].strip())]
         return conf
